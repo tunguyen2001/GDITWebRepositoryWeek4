@@ -15,6 +15,8 @@ namespace WebApiRepositoryWeek4.Data
         public DbSet<Categories> Categories { get; set; }
         public DbSet<Contacts> Contacts { get; set; }
 
+        //public DbSet<Product1> Product1 { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Products>()
@@ -50,8 +52,5 @@ namespace WebApiRepositoryWeek4.Data
 
             base.OnModelCreating(modelBuilder);
         }
-
-
-
     }
 }

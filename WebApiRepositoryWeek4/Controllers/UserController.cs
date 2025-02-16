@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using WebApiRepositoryWeek4.Services;
+using System.Collections;
+using System.Text.Json;
 using WebApiRepositoryWeek4.Models;
+using WebApiRepositoryWeek4.Repositories.Interface;
 
 namespace WebApiRepositoryWeek4.Controllers
 {
@@ -9,17 +11,23 @@ namespace WebApiRepositoryWeek4.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly UserService _userService;
+        private readonly IUserRepository _userRepository ;
 
-        public UserController(UserService userService)
+        public UserController(IUserRepository userRepository)
         {
-            _userService = userService;
+            _userRepository = userRepository;
         }
 
         [HttpGet]
         public JsonResult GetUserDetailDto()
         {
-            return new JsonResult(_userService.GetUserDetailDto()) ;
+            return new JsonResult(_userRepository.GetUserDetailDto()) ;
+        }
+
+        [HttpGet("GroupBy")]
+        public IEnumerable GetGroupBy()
+        {
+            return _userRepository.GetGroupBy();
         }
 
     }

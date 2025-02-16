@@ -16,6 +16,12 @@
         public int ProductNumber { get; set; }
         public int TotalPrice { get; set; }
 
+        //Product
+        public string  ProductName { get; set; }
+
+        //category
+        public string  CategoryName { get; set; }
+
         // cart
         public int CartNumber { get; set; }
 
